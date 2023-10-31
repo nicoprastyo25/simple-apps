@@ -1,14 +1,13 @@
 const express = require('express')
 const mysql = require('mysql');
-// const app = express()
-let app1 = express();  // Compliant
-app1.disable("x-powered-by");
+const app = express()
+app.disable("x-powered-by");
 const path = require('path')
 require('dotenv').config();
 
 // Import Middleware
 const logger = require('./middleware/logger')
-app1.use(logger)
+app.use(logger)
 const connection = require('./middleware/db_connect');
 
 // Dashboard
@@ -37,4 +36,4 @@ app.listen(process.env.APP_PORT, () => {
   console.log(`Example app listening on port ${process.env.APP_PORT}`)
 })
 
-module.exports = app1
+module.exports = app
